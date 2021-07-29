@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Asus\\source\\repos\\RifatSirProjectAPI5\\RifatSirProjectAPI5\\RifatSirProjectAPI5.csproj": {}
+    "E:\\After July 12\\Document\\DotNetProjects\\RifatSirProjectAPI5\\RifatSirProjectAPI5\\RifatSirProjectAPI5.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Asus\\source\\repos\\RifatSirProjectAPI5\\RifatSirProjectAPI5\\RifatSirProjectAPI5.csproj": {
+    "E:\\After July 12\\Document\\DotNetProjects\\RifatSirProjectAPI5\\RifatSirProjectAPI5\\RifatSirProjectAPI5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus\\source\\repos\\RifatSirProjectAPI5\\RifatSirProjectAPI5\\RifatSirProjectAPI5.csproj",
+        "projectUniqueName": "E:\\After July 12\\Document\\DotNetProjects\\RifatSirProjectAPI5\\RifatSirProjectAPI5\\RifatSirProjectAPI5.csproj",
         "projectName": "RifatSirProjectAPI5",
-        "projectPath": "C:\\Users\\Asus\\source\\repos\\RifatSirProjectAPI5\\RifatSirProjectAPI5\\RifatSirProjectAPI5.csproj",
+        "projectPath": "E:\\After July 12\\Document\\DotNetProjects\\RifatSirProjectAPI5\\RifatSirProjectAPI5\\RifatSirProjectAPI5.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus\\source\\repos\\RifatSirProjectAPI5\\RifatSirProjectAPI5\\obj\\",
+        "outputPath": "E:\\After July 12\\Document\\DotNetProjects\\RifatSirProjectAPI5\\RifatSirProjectAPI5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,21 +42,37 @@
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[5.0.7, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
             }
           },
           "imports": [

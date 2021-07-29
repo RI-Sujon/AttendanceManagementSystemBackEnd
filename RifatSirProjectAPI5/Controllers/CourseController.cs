@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RifatSirProjectAPI5.Models;
 using RifatSirProjectAPI5.Repository;
 using System;
@@ -6,6 +8,8 @@ using System.Collections.Generic;
 
 namespace RifatSirProjectAPI5.Controllers
 {
+
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class CourseController : Controller
     {
         private readonly CourseBasicInfoRepository _courseBasicInfoRepository = new CourseBasicInfoRepository();
@@ -13,6 +17,7 @@ namespace RifatSirProjectAPI5.Controllers
         private readonly CourseStudentRepository _courseStudentRepository = new CourseStudentRepository();
         private readonly StudentBasicInfoRepository _studentBasicInfoRepository = new StudentBasicInfoRepository();
 
+        [Authorize(Roles = "admin")]
         [HttpPost("surji/course/createCourse")]
         public IActionResult CreateCourse([FromBody] CourseBasicInfo courseBasicInfo)
         {
@@ -20,7 +25,7 @@ namespace RifatSirProjectAPI5.Controllers
 
             if (checkAccount == null)
             {
-                if (courseBasicInfo.Teacher1UserName != "") 
+                if (courseBasicInfo.Teacher1UserName != null && courseBasicInfo.Teacher1UserName != "") 
                 {
                     AdminBasicInfo adminBasicInfo = _adminBasicInfoRepository.GetByUserName(courseBasicInfo.Teacher1UserName);
                     if (adminBasicInfo != null)
@@ -29,11 +34,12 @@ namespace RifatSirProjectAPI5.Controllers
                     }
                     else 
                     {
-                        return Ok("T1 not founded");
+                        //return Ok("T1 not founded");
+                        return Ok(false);
                     }
                 }
 
-                if (courseBasicInfo.Teacher2UserName != "")
+                if (courseBasicInfo.Teacher2UserName != null && courseBasicInfo.Teacher2UserName != "")
                 {
                     AdminBasicInfo adminBasicInfo = _adminBasicInfoRepository.GetByUserName(courseBasicInfo.Teacher2UserName);
                     if (adminBasicInfo != null)
@@ -56,13 +62,14 @@ namespace RifatSirProjectAPI5.Controllers
             }
         }
 
-
+        [Authorize(Roles = "admin")]
         [HttpGet("surji/course/getAllCourse")]
         public IActionResult getAllCourseList()
         {
             return Ok(_courseBasicInfoRepository.GetAll());
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost("surji/course/updateCourseBasicInfo")]
         public IActionResult updateCourseBasicInfo([FromBody] CourseBasicInfo courseBasicInfo)
         {
@@ -96,7 +103,8 @@ namespace RifatSirProjectAPI5.Controllers
             return Ok(true);
 
         }
-        
+
+        [Authorize(Roles = "admin")]
         [HttpPost("surji/course/deleteCourse")]
         public IActionResult deleteCourse([FromBody] CourseBasicInfo courseBasicInfo)
         {
@@ -105,7 +113,7 @@ namespace RifatSirProjectAPI5.Controllers
             return Ok(true);
         }
 
-
+        [Authorize(Roles = "admin, teacher")]
         [HttpPost("surji/course/addStudentToCourse")]
         public IActionResult addStudentToCourse([FromBody] CourseStudent courseStudent)
         {
@@ -133,14 +141,14 @@ namespace RifatSirProjectAPI5.Controllers
             }
         }
 
-
+        [Authorize(Roles = "admin, teacher, student")]
         [HttpPost("surji/course/getAllStudentOfCourse")]
         public IActionResult getAllStudentOfCourse([FromBody] CourseStudent courseStudent)
         {
             return Ok(_courseStudentRepository.GetByCourseIdAndBatchNo(courseStudent.CourseId, courseStudent.BatchNo));
         }
 
-
+        [Authorize(Roles = "admin, teacher")]
         [HttpPost("surji/course/deleteStudentFromCourse")]
         public IActionResult deleteSingleStudentFromCourse([FromBody] CourseStudent courseStudent)
         {
@@ -148,12 +156,14 @@ namespace RifatSirProjectAPI5.Controllers
             return Ok(true);
         }
 
+        [Authorize(Roles = "teacher")]
         [HttpGet("surji/course/getAllCourseByTeacherUserName")]
         public IActionResult getAllCourseByTeacherUserName(string username)
-        {
+         {
             return Ok(_courseBasicInfoRepository.GetByTeacherUserName(username));
         }
 
+        [Authorize(Roles = "student")]
         [HttpGet("surji/course/getAllCourseByStudentRoll")]
         public IActionResult getAllCourseByStudentRoll(int bsseroll)
         {

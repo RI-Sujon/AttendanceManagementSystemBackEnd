@@ -16,26 +16,8 @@ namespace RifatSirProjectAPI5.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.6")
+                .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("RifatSirProjectAPI5.Models.AdminAuth", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("username")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AdminAuthTable");
-                });
 
             modelBuilder.Entity("RifatSirProjectAPI5.Models.AdminBasicInfo", b =>
                 {
@@ -179,27 +161,6 @@ namespace RifatSirProjectAPI5.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CourseStudentRelationTable");
-                });
-
-            modelBuilder.Entity("RifatSirProjectAPI5.Models.StudentAuth", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BSSEROLL")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("StudentAuthTable");
                 });
 
             modelBuilder.Entity("RifatSirProjectAPI5.Models.StudentBasicInfo", b =>

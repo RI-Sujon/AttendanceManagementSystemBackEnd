@@ -22,6 +22,11 @@ namespace RifatSirProjectAPI5.Repository
         {
             return databaseContext.StudentBasicInfoTable.SingleOrDefault(StudentBasicInfo=> StudentBasicInfo.BSSEROLL == BSSEROLL);
         }
+
+        public StudentBasicInfo GetByEmail(string Email)
+        {
+            return databaseContext.StudentBasicInfoTable.SingleOrDefault(StudentBasicInfo => StudentBasicInfo.Email == Email);
+        }
         public StudentBasicInfo GetById(int id)
         {
             return databaseContext.StudentBasicInfoTable.SingleOrDefault(StudentBasicInfo => StudentBasicInfo.Id == id);
